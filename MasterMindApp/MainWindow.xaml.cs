@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
+using MasterMindApp.ViewModel;
 
 namespace MasterMindApp
 {
@@ -11,27 +11,8 @@ namespace MasterMindApp
         public MainWindow()
         {
             InitializeComponent();
-            Tile[] Tiles = new Tile[40];
-            icMainBoard.ItemsSource = Tiles;
+            var mainViewModel = new MainViewModel();
+            DataContext = mainViewModel;
         }
-    }
-
-    public class Tile
-    {
-        public Tile()
-        {
-            Color = PegColor.Empty;
-        }
-        public PegColor Color;
-    }
-
-    public enum PegColor
-    {
-        Empty,
-        White,
-        Blue,
-        Green,
-        Red,
-        Yellow
     }
 }
