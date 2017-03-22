@@ -9,6 +9,7 @@
         Title="MasterMind" Height="700" Width="450" WindowStartupLocation="CenterScreen" >
 
     <Grid Margin="10">
+        <ItemsControl ItemsSource="{Binding Slots}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Rows="8" Columns="4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
