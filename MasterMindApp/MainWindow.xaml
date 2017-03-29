@@ -18,15 +18,17 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="1" >
-                        <Button Content="{Binding ColorText}"                                
+                        <Button Content="{Binding ColorText}" 
+                                Command="{Binding SlotClickCommand}" 
+                                Background="{Binding SlotBrush}"
                                 Width="50" Height="50"></Button>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <Button Content="{Binding PrzyciskText}"
-                Background="{Binding PrzyciskColor}"
-                Command="{Binding PrzyciskClickCommand}"                
+        <Button Content="{Binding ButtonText}"
+                Background="{Binding ButtonColor}"
+                Command="{Binding ButtonClickCommand}"                
                 VerticalAlignment="Bottom"></Button>
     </Grid>
 
