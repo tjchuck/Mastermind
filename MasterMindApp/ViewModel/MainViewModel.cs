@@ -5,81 +5,36 @@ using GalaSoft.MvvmLight.Command;
 using System.Windows.Media;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MasterMindApp.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        public ICommand SlotClickCommand { get; set; }
-        public ICommand PrzyciskClickCommand { get; set; }
-        public Slot[] Slots { get; set; }
-        public string PrzyciskText { get; set; }
-        public SolidColorBrush PrzyciskColor { get; set; } 
+        public ICommand ButtonClickCommand { get; set; }
+        //public SlotViewModel[] Slots { get; set; }
+        public ObservableCollection<SlotViewModel> Slots { get; set; }
+        public string ButtonText { get; set; }
+        public SolidColorBrush ButtonColor { get; set; } 
 
         public MainViewModel()
         {
-            SlotClickCommand = new RelayCommand(SlotClick);
-            PrzyciskClickCommand = new RelayCommand(PrzyciskClick);
-            PrzyciskText = "Start";
-            PrzyciskColor = Brushes.Green;
-            Slots = new Slot[TILESCOUNT];
-            for(int i = 0; i < TILESCOUNT; i++)
+            ButtonClickCommand = new RelayCommand(ButtonClick);
+            ButtonText = "Start";
+            ButtonColor = Brushes.Green;
+
+            Slots = new ObservableCollection<SlotViewModel>();
+            for (int i = 0; i < TILESCOUNT; i++)
             {
-                Slots[i] = new Slot();
+                Slots.Add(new SlotViewModel());
             }
         }
 
         private readonly int TILESCOUNT = 32;
 
-        private void SlotClick()
+        private void ButtonClick()
         {
-            MessageBox.Show("clicked");
+            MessageBox.Show("Button clicked.");
         }
-
-        private void PrzyciskClick()
-        {
-            MessageBox.Show("Przycisk clicked.");
-        }
-    }
-
-    public class Slot
-    {
-        public ICommand SlotClickCommand { get; set; }
-
-        public Slot()
-        {
-            SlotClickCommand = new RelayCommand(SlotClick);
-            State = SlotState.Empty;
-            ColorText = "Pusty";
-        }
-
-        private void SlotClick()
-        {
-            MessageBox.Show("Tile clicked.");
-        }
-
-        public SlotState State
-        {
-            get { return state; }
-            set
-            {
-                state = value;
-            }
-        }
-        public SolidColorBrush Brush { get; set; }
-        public string ColorText { get; set; }
-
-        private SlotState state;
-    }
-
-
-    public enum SlotState
-    {
-        Empty,
-        White,
-        Blue,
-        Green,
-        Red,
-        Yellow
     }
 }
